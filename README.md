@@ -1,2 +1,2 @@
-NEED TO FILL IN FOR CAPSTONE
 # MovieTracker
+### This is my capstone
