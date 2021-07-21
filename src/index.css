@@ -1,0 +1,466 @@
+body, html {
+  height: 100%;
+  background-color: #4e4e4e !important;
+}
+
+/* Start of homepage */
+
+.homepageNavbar {
+  background-color: rgb(41, 41, 41);
+  height: 300px;
+}
+
+.backgroundImg {
+  background-image: url("./images/theatre.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%; 
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 1500px;
+  height: 790px; 
+}
+
+#background-fade {
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 550px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  box-shadow: 10px 10px 10px rgba(94, 40, 40, 0.5);
+}
+
+.title {
+  z-index: 2;
+  color: white;
+  margin-top: 25px;
+  margin-left: 55px;
+}
+
+.description {
+  z-index: 2;
+  color: white;
+  margin-top: 160px;
+  margin-left: 600px;
+}
+
+
+.loginForm {
+  width: 200px;
+  position: absolute;
+  right: 40px;
+  margin-top: 20px;
+  z-index: 2;
+}
+
+.usernameTitle {
+  font-family: rubik;
+  font-size: 1.25vmax;
+  color: #fff
+}
+
+.usernameField {
+  border-radius: 5px;
+}
+
+.passwordTitle {
+  font-family: rubik;
+  font-size: 1.25vmax;
+  color: #fff
+}
+
+.passwordField {
+  border-radius: 5px;
+}
+
+.createAccount {
+  background-color: rgba(155, 24, 24, 0.808);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  font-family: rubik;
+  width: 400px;
+  padding: 25px;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  border-radius: 5px;
+  color: #F0EDE5;
+  z-index: 1;
+}
+
+input {
+  border-radius: 5px;
+  width: 100%
+}
+
+.createAccButton {
+  font-family: rubik;
+  background-color: #C0AB8E;
+  height: 30px !important;
+  width: 25%;
+  font-size: 1.5vmax !important;
+  padding: 0 !important;
+  margin-left: 275px;
+}
+
+.createField {
+  width: 100%;
+}
+
+
+/* End of homepage */
+
+/* Start of wrong password modal */
+.modal-backdrop.show {
+  z-index: 1;
+}
+
+.modal {
+  
+  font-family: rubik;
+  background-color: rgba(0, 0, 0, 0.103);
+  z-index: 4 !important;
+}
+
+.modal-title {
+  color: #fff;
+}
+
+.modal-header {
+  background-color: rgb(43, 43, 43);
+  height: 75px;
+}
+
+.modal-body {
+  font-family: rubik;
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(37, 37, 37);  
+  height: 100px;
+}
+
+.btn {
+  font-size: 20px !important;
+  background-color: rgb(136, 136, 136) !important
+}
+
+.btn-danger {
+  background-color: rgb(201, 73, 73) !important;
+}
+/* End of wrong password modal */
+
+/* Start of account page */
+
+#accountPageNavbar {
+  background-color: rgb(41, 41, 41);
+  height: 300px;
+}
+.helloUser {
+  color: #B4B7BA;
+  position: absolute;
+  top: 1%;
+  right: 10%;
+  font-size: 2vmax;
+}
+
+.myAccount{
+  background-color:  rgb(172, 48, 48);
+  color: white;
+  height: 300px;
+  padding-top: 50px;
+  padding-left: 25px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.accountPageNavbar {
+  background-color:  rgb(172, 48, 48);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.logoutButton {
+  background-color: rgba(46, 74, 98, 0);
+  font-family: rubik;
+  color: #F0EDE5;
+  border-style: none;
+  position: absolute;
+  top: 7%;
+  right: 1%;
+  width: auto;
+}
+
+.logoutButton:hover {
+  color: rgb(172, 48, 48);
+}
+
+.editAccount {
+  position: absolute;
+  top: 250px;
+  right: 10px;
+  border-radius: 4px;
+  background-color: lightgray;
+}
+
+/* Start of update account  */
+#editSection {
+  position: absolute;
+  top: 5px;
+}
+
+.deleteSection {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  width: 100%;
+}
+
+.closeAccountButton {
+  background-color:  rgb(172, 48, 48);
+  font-family: rubik;
+  color: #F0EDE5;
+  border-style: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5vmax
+}
+
+.closeAccountButton:hover {
+  color: #C0AB8E;
+}
+
+#userName {
+  font-family: rubik;
+  font-size: 5vmin;
+}
+
+.editButton {
+  background-color: rgba(46, 74, 98, 0);
+  border-style: none;
+}
+/* End of update account */
+
+/* Start of movie list */
+.movieList{
+  position: absolute;
+  top: 300px;
+  right: 20px;
+  width: 70%;
+  margin-top: 10px;
+}
+
+#movie-list {
+  height: 400px !important;
+  overflow: auto;
+}
+
+#movie-items {
+  background-color: rgba(211, 211, 211, 0.5);
+  border-radius: 4px;
+}
+
+.addMovie {
+  position: absolute;
+  top: 300px;
+  left: 20px;
+  width: 25%;
+  margin-top: 10px;
+}
+/* End of movie list */
+/* End of account page */
+
+@media (max-width: 568px) {
+  /* Start of homepage */
+    .title {
+    margin-top: 0px;
+    margin-left: 0px;
+    font-size: 30px;
+  }
+  
+  .description {
+    margin-top: 30px;
+    margin-left: 10px;
+    font-size: 15px;
+    width: 200px;
+    background-color: #802424d8;
+    padding: 10px;
+  }
+
+  .loginForm {
+    width: 150px;
+    position: absolute;
+    right: 100px;
+    margin-top: 65%;
+  }
+  
+  .createAccount {
+    width: 200px;
+    padding: 5px;
+    position: absolute;
+    top: 65%;
+    left: 5%;
+    border-radius: 5px;
+    color: #F0EDE5;
+    z-index: 1;
+  }
+  /* End of homepage */
+
+  /* Start of wrong password modal */
+.modal-backdrop.show {
+  z-index: 1;
+}
+
+#authModal {
+  width: 60%;
+  height: 70%;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+.modal-header {
+  height: 55px;
+
+}
+
+.modal-body {
+  font-size: 15px;
+  height: 100px;
+}
+
+.btn {
+  font-size: 10px !important;
+}
+
+/* End of wrong password modal */
+
+/* Start of account page */
+
+#accountPageNavbar {
+  height: 200px;
+}
+.helloUser {
+  position: absolute;
+  top: 1%;
+  right: 10%;
+  font-size: 9vmax;
+}
+
+.myAccount{
+  height: 300px;
+  padding-top: 50px;
+  padding-left: 25px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.accountPageNavbar {
+  background-color:  rgb(172, 48, 48);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.logoutButton {
+  background-color: rgba(46, 74, 98, 0);
+  font-family: rubik;
+  color: #F0EDE5;
+  border-style: none;
+  position: absolute;
+  top: 0%;
+  right: 1%;
+  width: auto;
+}
+
+.logoutButton:hover {
+  color: rgb(172, 48, 48);
+}
+
+.editAccount {
+  position: absolute;
+  top: 150px;
+  right: 10px;
+  border-radius: 4px;
+  background-color: lightgray;
+}
+
+/* Start of update account  */
+#editSection {
+  position: absolute;
+  top: 5px;
+}
+
+.deleteSection {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  width: 100%;
+}
+
+.closeAccountButton {
+  background-color:  rgb(172, 48, 48);
+  font-family: rubik;
+  color: #F0EDE5;
+  border-style: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5vmax
+}
+
+.closeAccountButton:hover {
+  color: #C0AB8E;
+}
+
+#userName {
+  font-family: rubik;
+  font-size: 5vmin;
+}
+
+.editButton {
+  background-color: rgba(46, 74, 98, 0);
+  border-style: none;
+}
+/* End of update account */
+
+/* Start of movie list */
+.movieList{
+  position: absolute;
+  top: 300px;
+  right: 20px;
+  width: 70%;
+  margin-top: 10px;
+}
+
+#movie-list {
+  height: 400px !important;
+  overflow: auto;
+}
+
+#movie-items {
+  background-color: rgba(211, 211, 211, 0.5);
+  border-radius: 4px;
+}
+
+.addMovie {
+  position: absolute;
+  top: 300px;
+  left: 20px;
+  width: 25%;
+  margin-top: 10px;
+}
+/* End of movie list */
+/* End of account page */
+
+}
+
+
+
+
