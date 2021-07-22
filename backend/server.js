@@ -12,7 +12,7 @@ let Movie = require('./MovieModel');
 
 app.use(cors());
 app.use(bodyParser.json());
-mongoose.connect('mongodb+srv://tamara123:tamara123@cluster0.bsriq.mongodb.net/movieTracker?retryWrites=true&w=majority', { 
+mongoose.connect('process.env.URI', { 
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
     useFindAndModify: false, 
