@@ -55,11 +55,12 @@ export default class MovieList extends Component {
 
     // }
 
-    movieList() {
-        return this.state.movie.map(function (current, i) {
-         return <DeleteMovie movie={current} key={i} />
-        })
-    }
+    // movieList() {
+    //     console.log(this.state.movie)
+    //     return this.state.movie.map(function (current, i) {
+    //      return <DeleteMovie movie={current} key={i} />
+    //     })
+    // }
 
 
     render() {
@@ -78,7 +79,10 @@ export default class MovieList extends Component {
                     </thead>
                     
                     <tbody id="movie-items">
-                        {this.movieList()}
+                        {this.state.movie.map(function (current, i) {
+                        return <DeleteMovie movie={current} key={i} />
+                        })}
+                        {/* {() => this.movieList()} */}
                     </tbody>
                    
                 </table>
