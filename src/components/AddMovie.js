@@ -20,16 +20,10 @@ export default class AddMovie extends Component {
             username: this.props.username,
             movie_description: this.state.movie_description,
             movie_price: this.state.movie_price,
+
         }
-
-        axios.post("http://localhost:8080/movieTracker/addMovie", newMovie)
-            .then(res =>
-                console.log(res.data));
-
-        this.setState({
-            movie_description: "",
-            movie_price: "",
-        })
+        this.props.testAddMovie(newMovie)
+        
     }
 
     handleMovieDescription(e) {
@@ -37,6 +31,7 @@ export default class AddMovie extends Component {
             movie_description: e.target.value
         })
     }
+
 
     handleMoviePrice(e) {
         this.setState({

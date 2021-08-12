@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import  { Redirect } from 'react-router-dom'
 
 export default class Homepage extends Component {
     constructor(props) {
@@ -12,7 +13,9 @@ export default class Homepage extends Component {
             name: '',
             newUsername: '',
             newPassword: '',
-            newName: ''
+            newName: '', 
+            userInput: '',
+            passInput: ''
         }
         // this.onInputChange = this.onInputChange.bind(this);
         this.handleUsername = this.handleUsername.bind(this);
@@ -20,6 +23,7 @@ export default class Homepage extends Component {
         this.handleCreate = this.handleCreate.bind(this);
         this.handleNewUsername = this.handleNewUsername.bind(this);
         this.handleNewPassword = this.handleNewPassword.bind(this);
+        this.handleLogin = this.handleLogin.bind(this)
         // Removed handleName on create account component, keeping just in case it affects anything down the road
         // Removed it from this.state and the model
         // this.handleName = this.handleName.bind(this);
@@ -54,9 +58,11 @@ export default class Homepage extends Component {
     // code to capture the full login name for handleLogin() to pass the full name entered
     // }
 
-    handleLogin() {
+    handleLogin(event) {
+        event.preventDefault()
+        // alert('Login was clicked')
         // password authentication
-        axios.get('http://localhost:8080/movieTracker/username/' + this.state.username + '/password/' +
+        axios.get('http://localhost:8080/movieTracker/username/' + this.state.userInput + '/password/' +
             this.state.password)
             .then(res => {
                 this.setState({
@@ -66,80 +72,61 @@ export default class Homepage extends Component {
                     password: '',
                     username: ''
                 })
+                return this.props.history.push('/account/' + res.data._id)
             })
             .catch(function (err) {
                 // console.log(err)
             });
-
-            // ON THE CONSOLE.LOG
-
-            // THIS ERROR MESSAGE COMES UP FIRST THING
-            // xhr.js:175 GET http://localhost:8080/movieTracker/username//password/ 404 (Not Found)
-
-            // FIRST KEYSTROKE AT LOGIN
-            // index.js:1452 Warning: A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components
-            // in input (at Homepage.js:172)
-            // in form (at Homepage.js:170)
-            // in div (at Homepage.js:167)
-            // in nav (at Homepage.js:165)
-            // in div (at Homepage.js:163)
-            // in Homepage (created by Route)
-            // in Route (at App.js:19)
-            // in div (at App.js:18)
-            // in Router (created by BrowserRouter)
-            // in BrowserRouter (at App.js:16)
-            // in App (at src/index.js:7)
-
-            // AND REPEATS FOR EVERY KEY STROKE
-            //xhr.js:175 GET http://localhost:8080/movieTracker/username/T/password/ 404 (Not Found)
-            //xhr.js:175 GET http://localhost:8080/movieTracker/username/TA/password/ 404 (Not Found)
-            // ETC
-
-
+            // if (this.state.login === true) {
+            //     return <Redirect to='/account'  />
+            // } else {
+            //     alert('password not correct')
+            // }
+ 
         // button render if password is valid
-        if (this.state.login === true) {
-            return (
-                <Link to={'/account/' + this.state.id} className="text-white text-decoration-none">Login</Link>
-            )
-        }
+        // if (this.state.login === true) {
+        //     return (
+        //         <Link to={'/account/' + this.state.id} className="text-white text-decoration-none">Login</Link>
+        //     )
+        // }
 
         // invalid password dead link with modal
-        if (this.state.login === false) {
-            return (
-                <div>
+        // if (this.state.login === false) {
+        //     return (
+        //         <div>
 
-                    <Link to={'/'} className="text-white text-decoration-none" data-toggle="modal" data-target="#authModal">Login</Link>
+        //             <Link to={'/'} className="text-white text-decoration-none" data-toggle="modal" data-target="#authModal">Login</Link>
 
-                    <div className="modal" id="authModal">
-                        <div className="modal-dialog modal-dialog-centered">
-                            <div className="modal-content">
-
-
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Error!</h4>
-                                </div>
-
-                                <div className="modal-body">
-                                    Incorrect username and/or password.<br />
-                                    Please try again or create an account.
-                                </div>
+        //             <div className="modal" id="authModal">
+        //                 <div className="modal-dialog modal-dialog-centered">
+        //                     <div className="modal-content">
 
 
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
+        //                         <div className="modal-header">
+        //                             <h4 className="modal-title">Error!</h4>
+        //                         </div>
 
-                            </div>
-                        </div>
-                    </div>
+        //                         <div className="modal-body">
+        //                             Incorrect username and/or password.<br />
+        //                             Please try again or create an account.
+        //                         </div>
 
-                </div>
-            )
-        }
 
-        this.setState({
-            login: false
-        })
+        //                         <div className="modal-footer">
+        //                             <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+        //                         </div>
+
+        //                     </div>
+        //                 </div>
+        //             </div>
+
+        //         </div>
+        //     )
+        // }
+
+    //     this.setState({
+    //         login: false
+    //     })
     }
     // end login function
 
@@ -240,7 +227,10 @@ export default class Homepage extends Component {
                                 autoComplete="off"
                                 required
                             /></p>
-                            {this.handleLogin()}
+                            <button
+                            onClick={this.handleLogin}
+                            >Login</button>
+                            {/* {this.handleLogin()} */}
 
                         </form>
                     {/* Login form end */}

@@ -9,17 +9,18 @@ export default class Welcome extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: ""
-            // name: "",
+            username: "",
+            // name: ""
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:8080/movieTracker/' + this.props.match.params.id)
             .then(res => {
+                console.log(res)
                 this.setState({
-                    username: res.data.username
-                    // name: res.data.name,
+                    username: res.data.username,
+                    // name: res.data.name
                 })
                 // console.log("this.state.username", this.state.username)
            
@@ -27,6 +28,17 @@ export default class Welcome extends Component {
             .catch(function (error) {
                 console.log(error)
             })
+    }
+
+    testAddMovie(newMovie) {
+        axios.post("http://localhost:8080/movieTracker/addMovie", newMovie)
+            .then(res =>
+                console.log(res.data));
+                
+        // this.setState({
+        //     movie_description: "",
+        //     movie_price: "",
+        // })
     }
 
     render() {
@@ -45,14 +57,16 @@ export default class Welcome extends Component {
                             Logout
                         </Link></button>
                 </nav>
-
+                {this.state.username && (
                 <div className="movieList">
                     <MovieList username={this.state.username} />
                 </div>
+                )}
+                {this.state.username && (
                 <div className="addMovie">
-                    <AddMovie username={this.state.username} />
+                    <AddMovie username={this.state.username}  testAddMovie={this.testAddMovie}/>
                 </div>
-
+                )}
             </div>
         )
     }
