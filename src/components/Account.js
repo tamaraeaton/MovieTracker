@@ -10,6 +10,7 @@ export default class Welcome extends Component {
         super(props);
         this.state = {
             username: "",
+            movies: []
             // name: ""
         }
     }
@@ -22,6 +23,7 @@ export default class Welcome extends Component {
                     username: res.data.username,
                     // name: res.data.name
                 })
+                this.fetchMovies(res.data.username)
                 // console.log("this.state.username", this.state.username)
            
             })
@@ -30,15 +32,46 @@ export default class Welcome extends Component {
             })
     }
 
-    testAddMovie(newMovie) {
+    
+
+  fetchMovies(username) {
+    axios
+      .get("http://localhost:8080/movieTracker/movies/" + username)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          movies: res.data,
+        });
+
+        // console.log("res.data", res.data)
+        })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+    testAddMovie = (newMovie) => {
+        console.log(this.state)
         axios.post("http://localhost:8080/movieTracker/addMovie", newMovie)
-            .then(res =>
-                console.log(res.data));
-                
+            .then(res => {
+                this.fetchMovies(this.state.username)
+                console.log(res.data);
+            })
         // this.setState({
         //     movie_description: "",
         //     movie_price: "",
         // })
+    }
+
+    handleDelete = (movieId) => {
+        axios.delete("http://localhost:8080/movieTracker/movies/delete/" + movieId)
+            .then(res => {
+                this.fetchMovies(this.state.username)
+                console.log(res.data)
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
     }
 
     render() {
@@ -57,9 +90,9 @@ export default class Welcome extends Component {
                             Logout
                         </Link></button>
                 </nav>
-                {this.state.username && (
+                {this.state.movies && (
                 <div className="movieList">
-                    <MovieList username={this.state.username} />
+                    <MovieList  movies={this.state.movies} handleDelete={this.handleDelete}/>
                 </div>
                 )}
                 {this.state.username && (

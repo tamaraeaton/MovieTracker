@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Link } from "react-router-dom";
-import  { Redirect } from 'react-router-dom'
 
 export default class Homepage extends Component {
     constructor(props) {
@@ -19,7 +17,7 @@ export default class Homepage extends Component {
         }
         // this.onInputChange = this.onInputChange.bind(this);
         this.handleUsername = this.handleUsername.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
+        // this.handlePassword = this.handlePassword.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleNewUsername = this.handleNewUsername.bind(this);
         this.handleNewPassword = this.handleNewPassword.bind(this);
@@ -75,6 +73,7 @@ export default class Homepage extends Component {
                 return this.props.history.push('/account/' + res.data._id)
             })
             .catch(function (err) {
+                alert('password did not match')
                 // console.log(err)
             });
             // if (this.state.login === true) {
@@ -143,12 +142,12 @@ export default class Homepage extends Component {
 
 
     // login password input
-    handlePassword(e) {
-        this.setState({
-            password: e.target.value,
-            passInput: e.target.value
-        })
-    }
+    // handlePassword(e) {
+    //     this.setState({
+    //         password: e.target.value,
+    //         passInput: e.target.value
+    //     })
+    // }
 
     onNameChange = (evt) => {
         this.setState({ name: evt.target.value });
@@ -204,12 +203,9 @@ export default class Homepage extends Component {
                             
                             <input
                                 className="usernameField"
-                                // Changing the value to this.state.username stops the uncontrolled error message
-                                // value={this.state.username}
                                 value={this.state.userInput}
-                                onChange={this.onInputChange}
+
                                 onChange={this.handleUsername}
-                                // error message says 'No duplicate props allowed'
                                 autoComplete="off"
                                 required
                             /></p>
@@ -222,7 +218,7 @@ export default class Homepage extends Component {
                                 // value={this.state.password}
                                 value={this.state.passInput}
                                 onChange={this.onInputChange}
-                                onChange={this.handlePassword}
+                                // onChange={this.handlePassword}
                                 // error message says 'No duplicate props allowed'
                                 autoComplete="off"
                                 required
