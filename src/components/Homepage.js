@@ -15,16 +15,11 @@ export default class Homepage extends Component {
             userInput: '',
             passInput: ''
         }
-        // this.onInputChange = this.onInputChange.bind(this);
         this.handleUsername = this.handleUsername.bind(this);
-        // this.handlePassword = this.handlePassword.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleNewUsername = this.handleNewUsername.bind(this);
         this.handleNewPassword = this.handleNewPassword.bind(this);
         this.handleLogin = this.handleLogin.bind(this)
-        // Removed handleName on create account component, keeping just in case it affects anything down the road
-        // Removed it from this.state and the model
-        // this.handleName = this.handleName.bind(this);
     }
 
     handleCreate(e) {
@@ -47,19 +42,9 @@ export default class Homepage extends Component {
             newName: ''
         })
     }
-    // end account create function
-
-    // Login function - authenticates password
-    // password is false or to permit login in password is valid
- 
-    //handleLoginInput() {
-    // code to capture the full login name for handleLogin() to pass the full name entered
-    // }
 
     handleLogin(event) {
         event.preventDefault()
-        // alert('Login was clicked')
-        // password authentication
         axios.get('http://localhost:8080/movieTracker/username/' + this.state.userInput + '/password/' +
             this.state.password)
             .then(res => {
@@ -74,7 +59,6 @@ export default class Homepage extends Component {
             })
             .catch(function (err) {
                 alert('password did not match')
-                // console.log(err)
             });
             // if (this.state.login === true) {
             //     return <Redirect to='/account'  />
@@ -140,14 +124,6 @@ export default class Homepage extends Component {
     }
     // end login username input
 
-
-    // login password input
-    // handlePassword(e) {
-    //     this.setState({
-    //         password: e.target.value,
-    //         passInput: e.target.value
-    //     })
-    // }
 
     onNameChange = (evt) => {
         this.setState({ name: evt.target.value });
